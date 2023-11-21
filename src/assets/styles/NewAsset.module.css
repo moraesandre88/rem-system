@@ -1,0 +1,181 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 3px solid #7392b7;
+  border-radius: 10px;
+  padding: 5px 25px;
+}
+
+.label {
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.s_input {
+  width: 30%;
+  height: 15px;
+}
+
+.m_input {
+  width: 50%;
+  height: 15px;
+}
+
+.l_input {
+  width: 100%;
+  height: 15px;
+}
+
+.xl_input {
+  width: 130px;
+  height: 20px;
+}
+
+.status_input {
+  width: 50%;
+  height: 15px;
+  margin-left: 15px;
+}
+
+
+.fields_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+  flex: 1;
+}
+
+.owner_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  align-items:flex-end;
+  gap: 30px;
+}
+
+.input {
+  width: 100%;
+  height: 15px;
+}
+
+.text_area {
+  width: 100%;
+  height: 40vh;
+}
+
+.button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #1f4d1f;
+  color: #ffffff;
+  cursor: pointer;
+  &:hover {
+    background-color: #45a049;
+  }
+}
+
+.img {
+  width: 130px;
+  height: 130px;
+  
+  display: block;
+
+}
+
+.block_wrapper {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex: 1;
+  gap: 30px;
+}
+
+.section_wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.column_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.checkbox_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  width: 100%;
+  gap: 10px;
+}
+
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width:min-content;
+}
+
+.input_img_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width:auto;
+}
+
+.image_block{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.image_wrapper{ 
+  /* position: relative; */
+  width: auto;
+  height: auto;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.button_wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.success {
+  font-size: 10px;
+  color: #008000;
+}
+
+.error {
+  font-size: 10px;
+  color: #ff0000;
+}
+
+.block_title {
+  width: fit-content;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.load_icon {
+  font-size: 200px;
+}
