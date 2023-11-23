@@ -1,11 +1,12 @@
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "../../assets/styles/Loading.module.css";
 
-const Loading = ({styles}) => {
+const Loading = () => {
   return (
-    <>
-      <FontAwesomeIcon className={styles} icon={faSpinner} spin />
-    </>
+    <div className={styles.loading_wrapper}>
+      <FontAwesomeIcon className={styles.icon} icon={faSpinner} spin />
+    </div>
   );
 };
 

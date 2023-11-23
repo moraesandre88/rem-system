@@ -30,6 +30,7 @@ const Login = () => {
   }, [errorMessage]);
 
   const submitData = async (data) => {
+    setErrorMessage("");
     try {
       const response = await fetch("http://localhost:3500/auth", {
         method: "POST",
@@ -39,13 +40,12 @@ const Login = () => {
         credentials: "include",
         body: JSON.stringify(data),
       });
-      if (!response?.ok) {
-        const responseData = await response?.json();
+      const responseData = await response?.json();
+      if (!response?.ok) {       
         if ([400, 401, 500].includes(response?.status)) {
           setErrorMessage(responseData.message);
         }
       } else {
-        const responseData = await response?.json();
         const accessToken = responseData?.accessToken;
         const decodedToken = jwt_decode(accessToken);
         const roles = decodedToken?.userInfo?.userRoles;
@@ -61,12 +61,8 @@ const Login = () => {
         navigate(destiny, { replace: true });
       }
     } catch (error) {
-      if (error instanceof TypeError) {
-        setErrorMessage("Falha na rede.");
-      } else {
         setErrorMessage("Falha no login.");
       }
-    }
   };
 
   return (
