@@ -1,15 +1,3 @@
-.card_container {
-  width:250px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  border: 3px solid #7392b7;
-  border-radius: 10px;
-  padding: 15px;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
 .slider_container {
   width: 100%;
   height: auto;
@@ -17,7 +5,10 @@
 }
 
 .infos {
-  font-size: 15px;
   padding: 0;
   margin: 0;
+}
+
+.link {
+  text-decoration: none;
 }

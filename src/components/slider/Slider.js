@@ -6,10 +6,10 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
 import cloudinary from "../../assets/cloudinary/cloudConfig";
 register();
 
-const Slider = ({ images }) => {
+const Slider = ({ images, imageWidth, imageHeight }) => {
   const alteredImage = (image) => {
     let myImage = cloudinary.image(image);
-    myImage.resize(fill().width(250).height(180));
+    myImage.resize(fill().width(imageWidth).height(imageHeight));
     return myImage;
   };
 

@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 import Slider from "../slider/Slider";
 import styles from "../../assets/styles/AssetsCard.module.css";
 
 const AssetsCard = ({
-  //customkey,
   images,
   type,
-  street,
   neighborhood,
   state,
   size,
@@ -21,31 +22,51 @@ const AssetsCard = ({
   code,
 }) => {
   return (
-    <section className={styles.card_container}>
+  <Link className={styles.link} to={`/assets/${code}`}>
+    <Card square={false} elevation={3} variant="elevation" sx={{ maxWidth: 250, height:420 }}>
       <div className={styles.slider_container}>
-        <Slider images={images} />
+        <Slider images={images} imageWidth={250} imageHeight={180} />
       </div>
-      <p className={styles.infos}>{type}</p>
-      <p className={styles.infos}>{street}</p>
-      <p className={styles.infos}>
-        {neighborhood}, {state}
-      </p>
-      <p className={styles.infos}>{size} m²</p>
-      <p className={styles.infos}>{bedrooms} quarto(s)</p>
-      <p className={styles.infos}>{parkingSpaces} vaga(s)</p>
-      {selling && <p className={styles.infos}>Venda: {sellingPrice}</p>}
-      {rental && <p className={styles.infos}>Locação: {rentalPrice}</p>}
-      {monthlyCondominium > 0 && (
-        <p className={styles.infos}>Condomínio: {monthlyCondominium}</p>
-      )}
-      <p className={styles.infos}>Código: {code}</p>
-      <p className={styles.infos}>
-        Status: {published ? "ativado" : "desativado"}
-      </p>
-      <Link to={`/assets/${code}`}>
-        <button type="button">Mais informações</button>
-      </Link>
-    </section>
+      <CardContent>
+        <Typography gutterBottom variant="h6">
+          {type}
+        </Typography>
+        <Typography className={styles.infos} gutterBottom paragraph>
+          {neighborhood}, {state}
+        </Typography>
+        <Typography className={styles.infos} gutterBottom paragraph>
+          {size} m² | {bedrooms} quarto(s) | {parkingSpaces} vaga(s)
+        </Typography>
+        {selling && (
+          <Typography className={styles.infos} gutterBottom paragraph>
+            Venda: R${sellingPrice}
+          </Typography>
+        )}
+        {rental && (
+          <Typography className={styles.infos} gutterBottom paragraph>
+            Locação: R${rentalPrice}
+          </Typography>
+        )}
+        {monthlyCondominium > 0 && (
+          <Typography className={styles.infos} gutterBottom paragraph>
+            Condomínio: R${monthlyCondominium}
+          </Typography>
+        )}
+        <Typography className={styles.infos} gutterBottom paragraph>
+          Código: {code}
+        </Typography>
+        <Typography
+          className={styles.infos}
+          gutterBottom
+          paragraph
+          color={published ? "primary.main" : "error.main"}
+        >
+          Status: {published ? "ativado" : "desativado"}
+        </Typography>
+      </CardContent>
+    </Card>
+  </Link>
+    
   );
 };
 

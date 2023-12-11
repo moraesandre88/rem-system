@@ -1,34 +1,8 @@
-.sidebar {
-  position: fixed;
-  top: 15vh;
-  right: 95vw;
-  bottom: 5vh;
-  left: 0;
-  background-color: #7392b7;
+.button_deactivated {
   color: #fff;
-  text-align: center;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
 }
 
-.link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 3vh;
-  gap: 1vw;
-  text-decoration: none;
-  line-height: 0;
-  color: #ffffff;
-  &:hover {
-    text-decoration: underline;
-  }
+.button_activated {
+  color: #033e81;
 }
 
-.icon {
-  margin-right: 5px;
-}

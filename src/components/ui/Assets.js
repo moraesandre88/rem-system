@@ -51,7 +51,6 @@ const Assets = () => {
       controller.abort();
     };
     
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log(assets)
@@ -69,7 +68,6 @@ const Assets = () => {
               key={asset.code}
               images={asset.images}
               type={asset.type}
-              street={asset.street}
               neighborhood={asset.neighborhood}
               state={asset.state}
               size={asset.size}

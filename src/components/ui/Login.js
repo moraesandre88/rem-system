@@ -1,20 +1,26 @@
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import useGlobal from "../../modules/hooks/useGlobal";
 import { useForm } from "react-hook-form";
+import Paper from "@mui/material/Paper";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import InputAdornment from "@mui/material/InputAdornment";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import PasswordIcon from "@mui/icons-material/Password";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import styles from "../../assets/styles/Login.module.css";
 
 const Login = () => {
   const {
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
     register,
     reset,
   } = useForm({
-    defaultValues: { username: "", password: "" },
+    defaultValues: { username: "Moraesandre", password: "@Lvaro1955" },
     mode: "onTouched",
   });
   const { setAuth, setRoles } = useGlobal();
@@ -41,7 +47,7 @@ const Login = () => {
         body: JSON.stringify(data),
       });
       const responseData = await response?.json();
-      if (!response?.ok) {       
+      if (!response?.ok) {
         if ([400, 401, 500].includes(response?.status)) {
           setErrorMessage(responseData.message);
         }
@@ -61,58 +67,85 @@ const Login = () => {
         navigate(destiny, { replace: true });
       }
     } catch (error) {
-        setErrorMessage("Falha no login.");
-      }
+      setErrorMessage("Falha no login.");
+    }
   };
 
   return (
     <>
-      <form className={styles.form} onSubmit={handleSubmit(submitData)}>
-        {errorMessage ? <p className={styles.error}>{errorMessage}</p> : null}
+      <Paper className={styles.paper} elevation={3} variant="elevation">
+        <form onSubmit={handleSubmit(submitData)}>
+          {/*Errors from the submit response */}
+          <Typography paragraph={true} gutterBottom={true} color="error.main">
+            {errorMessage}
+          </Typography>
 
-        <label className={styles.label} htmlFor="username">
-          <FontAwesomeIcon className={styles.icon} icon={faUser} />
-          Usuário:
-        </label>
-        <input
-          className={styles.input}
-          {...register("username", {
-            required: "Campo obrigatório",
-          })}
-          autoComplete="off"
-          type="text"
-        />
-        <p className={styles.error}>{errors.username?.message}</p>
+          {/*Username field */}
+          <TextField
+            {...register("username", {
+              required: "Campo obrigatório",
+            })}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <AccountCircleIcon />
+                </InputAdornment>
+              ),
+            }}
+            variant="outlined"
+            fullWidth
+            label="Usuário"
+            autoFocus={true}
+            autoComplete="off"
+          />
+          <Typography paragraph={true} gutterBottom={true} color="error.main">
+            {errors.username?.message}
+          </Typography>
 
-        <label className={styles.label} htmlFor="password">
-          <FontAwesomeIcon className={styles.icon} icon={faLock} />
-          Senha:
-        </label>
-        <input
-          className={styles.input}
-          {...register("password", {
-            required: "Campo obrigatório",
-          })}
-          autoComplete="off"
-          type="password"
-        />
-        <p className={styles.error}>{errors.password?.message}</p>
+          {/*Password field */}
+          <TextField
+            {...register("password", {
+              required: "Campo obrigatório",
+            })}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <PasswordIcon />
+                </InputAdornment>
+              ),
+            }}
+            variant="outlined"
+            fullWidth
+            label="Senha"
+            type="password"
+            autoComplete="off"
+          />
+          <Typography paragraph={true} gutterBottom={true} color="error.main">
+            {errors.password?.message}
+          </Typography>
 
-        <div className={styles.button_wrapper}>
-          <button className={styles.button} type="submit">
-            Login
-          </button>
-        </div>
-      </form>
+          <Stack direction="row" justifyContent="center">
+            <Button
+              className={styles.button}
+              variant="contained"
+              color="primary"
+              type="submit"
+              disabled={!isValid}
+            >
+              Login
+            </Button>
+          </Stack>
+        </form>
 
-      <div className={styles.register_wrapper}>
-        <p>
-          Não se cadastrou?
-          <span>
-            <Link to="/register">Cadastre-se</Link>
-          </span>
-        </p>
-      </div>
+        <Typography
+          paragraph={true}
+          gutterBottom={true}
+          mt={1}
+          color="primary.main"
+        >
+          Não é cadastrado? <Link to="/register">Cadastre-se</Link>
+        </Typography>
+      </Paper>
     </>
   );
 };

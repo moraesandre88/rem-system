@@ -1,32 +1,18 @@
 .navbar {
-  background-color: #7392b7;
-  color: #fff;
   text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 10px;
-  position: fixed;
   top: 10vh;
   right: 0;
   bottom: 83vh;
   left: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 
-.link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 3vh;
-  gap: 1vw;
-  text-decoration: none;
-  line-height: 0;
-  color: #ffffff;
-  &:hover {
-    text-decoration: underline;
-  }
+.button_deactivated {
+  color: #fff;
 }
 
-.icon {
-  margin-right: 5px;
+.button_activated {
+  color: #033e81;
 }

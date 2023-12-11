@@ -1,8 +1,14 @@
+import AppBar from "@mui/material/AppBar";
+import Typography from "@mui/material/Typography";
 import styles from "../../assets/styles/Footer.module.css"
 
 const Footer = () => {
+  let year = new Date().getFullYear();
+
   return (
-    <footer className={styles.footer}>Footer</footer>
+    <AppBar className={styles.footer} position="fixed" color="primary">
+      <Typography variant="subtitle1">REMsys&copy;{year}</Typography>
+    </AppBar>
   )
 }
 

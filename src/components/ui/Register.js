@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { faUser, faLock, faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Paper from "@mui/material/Paper";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import InputAdornment from "@mui/material/InputAdornment";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import PasswordIcon from "@mui/icons-material/Password";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import styles from "../../assets/styles/Register.module.css";
 
 const Register = () => {
   const {
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
     register,
     reset,
@@ -64,86 +70,117 @@ const Register = () => {
 
   return (
     <>
-      <form className={styles.form} onSubmit={handleSubmit(submitData)}>
-        {message ? (
-          success ? (
-            <p className={styles.success}>
-              <FontAwesomeIcon className={styles.icon} icon={faCheck} />
-              {message}
-            </p>
-          ) : (
-            <p className={styles.error}>{message}</p>
-          )
-        ) : null}
+      <Paper className={styles.paper} elevation={3} variant="elevation">
+        <form onSubmit={handleSubmit(submitData)}>
+          {/*Messages from the submit response */}
+          <Typography
+            paragraph={true}
+            gutterBottom={true}
+            color={success ? "success.main" : "error.main"}
+          >
+            {message}
+          </Typography>
 
-        <label className={styles.label} htmlFor="username">
-          <FontAwesomeIcon className={styles.icon} icon={faUser} />
-          Usuário:
-        </label>
-        <input
-          className={styles.input}
-          {...register("username", {
-            pattern: {
-              value: /^[a-zA-Z]{8,15}$/,
-              message: "Somente letras. De 8 à 15 caracteres",
-            },
-            required: "Campo obrigatório",
-          })}
-          autoComplete="off"
-          type="text"
-        />
-        <p className={styles.error}>{errors.username?.message}</p>
+          {/*Username field */}
+          <TextField
+            {...register("username", {
+              pattern: {
+                value: /^[a-zA-Z]{8,15}$/,
+                message: "Somente letras. De 8 à 15 caracteres",
+              },
+              required: "Campo obrigatório",
+            })}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <AccountCircleIcon />
+                </InputAdornment>
+              ),
+            }}
+            variant="outlined"
+            fullWidth
+            label="Usuário"
+            autoFocus={true}
+            autoComplete="off"
+          />
+          <Typography paragraph={true} gutterBottom={true} color="error.main">
+            {errors.username?.message}
+          </Typography>
 
-        <label className={styles.label} htmlFor="password">
-          <FontAwesomeIcon className={styles.icon} icon={faLock} />
-          Senha:
-        </label>
-        <input
-          className={styles.input}
-          {...register("password", {
-            pattern: {
-              value: /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{5,10}$).*/,
-              message:
-                "Letras, números e caracteres especiais. De 5 à 15 caracteres",
-            },
-            required: "Campo obrigatório",
-          })}
-          autoComplete="off"
-          type="password"
-        />
-        <p className={styles.error}>{errors.password?.message}</p>
+          {/*Password field */}
+          <TextField
+            {...register("password", {
+              pattern: {
+                value:
+                  /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{5,10}$).*/,
+                message:
+                  "Letras, números e caracteres especiais. De 5 à 15 caracteres",
+              },
+              required: "Campo obrigatório",
+            })}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <PasswordIcon />
+                </InputAdornment>
+              ),
+            }}
+            variant="outlined"
+            fullWidth
+            label="Senha"
+            type="password"
+            autoComplete="off"
+          />
+          <Typography paragraph={true} gutterBottom={true} color="error.main">
+            {errors.password?.message}
+          </Typography>
 
-        <label className={styles.label} htmlFor="passwordConfirmation">
-          <FontAwesomeIcon className={styles.icon} icon={faLock} />
-          Confirme sua senha:
-        </label>
-        <input
-          className={styles.input}
-          {...register("passwordConfirmation", {
-            required: "Campo obrigatório",
-            validate: (value) =>
-              value === passwordWatcher || "As senhas não coincidem",
-          })}
-          autoComplete="off"
-          type="password"
-        />
-        <p className={styles.error}>{errors.passwordConfirmation?.message}</p>
+          {/*Password confirmation field */}
+          <TextField
+            {...register("passwordConfirmation", {
+              required: "Campo obrigatório",
+              validate: (value) =>
+                value === passwordWatcher || "As senhas não coincidem",
+            })}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <PasswordIcon />
+                </InputAdornment>
+              ),
+            }}
+            variant="outlined"
+            fullWidth
+            label="Confirme sua senha"
+            type="password"
+            autoComplete="off"
+          />
+          <Typography paragraph={true} gutterBottom={true} color="error.main">
+            {errors.passwordConfirmation?.message}
+          </Typography>
 
-        <div className={styles.button_wrapper}>
-          <button className={styles.button} type="submit">
-            Criar
-          </button>
-        </div>
-      </form>
+          <Stack direction="row" justifyContent="center">
+            <Button
+              className={styles.button}
+              variant="contained"
+              color="primary"
+              type="submit"
+              disabled={!isValid}
+            >
+              Cadastrar
+            </Button>
+          </Stack>
+        </form>
 
-      <div className={styles.login_wrapper}>
-        <p>
-          Já é cadastrado?
-          <span>
-            <Link to="/login">Login</Link>
-          </span>
-        </p>
-      </div>
+        <Typography
+          paragraph={true}
+          gutterBottom={true}
+          mt={1}
+          color="primary.main"
+        >
+          Já é cadastrado? <Link to="/login">Faça login</Link>
+        </Typography>
+      </Paper>
     </>
   );
 };

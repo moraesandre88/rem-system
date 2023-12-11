@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+Link for english version: [README-en](https://github.com/moraesandre88/rem-system/blob/main/README_en.md)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# REM-System
 
-## Available Scripts
+Olá! Seja bem-vindo. Essa é uma aplicação para um sistema de gerenciamento imobiliário utilzando React.js. Ela faz parte do projeto REM junto ao [REM-Server](https://github.com/moraesandre88/rem-server) e o REM-Site, todos em desenvolvimento.
 
-In the project directory, you can run:
+## Configurações iniciais
 
-### `npm start`
+Uma vez que esteja com o Rem-System na sua máquina, algumas configurações terão de ser feitas para que o sistema e alguns de seus serviços operem de forma correta. As etapas estão detalhadas na listagem logo abaixo.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Npm
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Antes de mais nada, vale lembrar de instalar as dependências necessárias para que o projeto funcione. No seu terminal, navegue até a pasta do projeto `rem-system` e execute o comando: `npm i`. Uma vez que tudo esteja instalado, pode avançar para as demais etapas.
 
-### `npm test`
+### 2. REM-Server
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Como mencionado acima, esse projeto faz parte de um sistema que utiliza um servidor próprio, o [REM-Server](https://github.com/moraesandre88/rem-server). Clique no link e siga as instruções para configurar o servidor localmente.
 
-### `npm run build`
+### 3. Cloudinary
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para a hospedagem das fotos, foi utilizado o [Cloudinary](https://cloudinary.com/). As instruções sobre como criar sua conta e configurar o ambiente (no [REM-Server](https://github.com/moraesandre88/rem-server)) estão no README no link. Uma vez criada a conta, você precisará criar um arquivo `.env` na raiz do projeto e nele, criar uma variável chamada `REACT_APP_CLOUDINARY_CLOUD_NAME`. Atribua a essa variável sua `cloud_name` oriunda do Cloudinary. Uma vez criada, será necessário reiniciar o projeto para que a mesma seja reconhecida. Feito isso, todas as configurações necessárias estão prontas.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Iniciando o sistema
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Após a configuração inicial do sistema e a inicialização do [REM-Server](https://github.com/moraesandre88/rem-server) , abra seu terminal, vá para `rem-system` e execute o comando `npm start`. Pronto, seu sistema já está rodando e pronto para ser usado. 
 
-### `npm run eject`
+## Observações
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Seguindo todas as etapas até aqui, será necessário criar o primeiro usuário com sua senha. Esse terá todas as permissões necessárias para acessar todos os recursos do sistema. Os demais terão acessos mais restritos. Lembrando que esse é um projeto em desenvolvimento e que ainda há operações a serem criadas para o mesmo.
