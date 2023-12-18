@@ -20,7 +20,7 @@ const Login = () => {
     register,
     reset,
   } = useForm({
-    defaultValues: { username: "", password: "" },
+    defaultValues: { username: "Moraesandre", password: "@Lvaro1955" },
     mode: "onTouched",
   });
   const { setAuth, setRoles } = useGlobal();

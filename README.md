@@ -2,7 +2,7 @@ Link for english version: [README-en](https://github.com/moraesandre88/rem-syste
 
 # REM-System
 
-Olá! Seja bem-vindo. Essa é uma aplicação para um sistema de gerenciamento imobiliário utilzando React.js. Ela faz parte do projeto REM junto ao [REM-Server](https://github.com/moraesandre88/rem-server) e o REM-Site, todos em desenvolvimento.
+Olá! Seja bem-vindo. Essa é uma aplicação para um sistema de gerenciamento imobiliário utilizando React.js. Ela faz parte do projeto REM junto ao [REM-Server](https://github.com/moraesandre88/rem-server) e o REM-Site, todos em desenvolvimento.
 
 ## Configurações iniciais
 
