@@ -72,81 +72,79 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Paper className={styles.paper} elevation={3} variant="elevation">
-        <form onSubmit={handleSubmit(submitData)}>
-          {/*Errors from the submit response */}
-          <Typography paragraph={true} gutterBottom={true} color="error.main">
-            {errorMessage}
-          </Typography>
-
-          {/*Username field */}
-          <TextField
-            {...register("username", {
-              required: "Campo obrigatório",
-            })}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircleIcon />
-                </InputAdornment>
-              ),
-            }}
-            variant="outlined"
-            fullWidth
-            label="Usuário"
-            autoFocus={true}
-            autoComplete="off"
-          />
-          <Typography paragraph={true} gutterBottom={true} color="error.main">
-            {errors.username?.message}
-          </Typography>
-
-          {/*Password field */}
-          <TextField
-            {...register("password", {
-              required: "Campo obrigatório",
-            })}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <PasswordIcon />
-                </InputAdornment>
-              ),
-            }}
-            variant="outlined"
-            fullWidth
-            label="Senha"
-            type="password"
-            autoComplete="off"
-          />
-          <Typography paragraph={true} gutterBottom={true} color="error.main">
-            {errors.password?.message}
-          </Typography>
-
-          <Stack direction="row" justifyContent="center">
-            <Button
-              className={styles.button}
-              variant="contained"
-              color="primary"
-              type="submit"
-              disabled={!isValid}
-            >
-              Login
-            </Button>
-          </Stack>
-        </form>
-
-        <Typography
-          paragraph={true}
-          gutterBottom={true}
-          mt={1}
-          color="primary.main"
-        >
-          Não é cadastrado? <Link to="/register">Cadastre-se</Link>
+    <Paper className={styles.paper} elevation={3} variant="elevation">
+      <form onSubmit={handleSubmit(submitData)}>
+        {/*Errors from the submit response */}
+        <Typography paragraph={true} gutterBottom={true} color="error.main">
+          {errorMessage}
         </Typography>
-      </Paper>
-    </>
+
+        {/*Username field */}
+        <TextField
+          {...register("username", {
+            required: "Campo obrigatório",
+          })}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircleIcon />
+              </InputAdornment>
+            ),
+          }}
+          variant="outlined"
+          fullWidth
+          label="Usuário"
+          autoFocus={true}
+          autoComplete="off"
+        />
+        <Typography paragraph={true} gutterBottom={true} color="error.main">
+          {errors.username?.message}
+        </Typography>
+
+        {/*Password field */}
+        <TextField
+          {...register("password", {
+            required: "Campo obrigatório",
+          })}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <PasswordIcon />
+              </InputAdornment>
+            ),
+          }}
+          variant="outlined"
+          fullWidth
+          label="Senha"
+          type="password"
+          autoComplete="off"
+        />
+        <Typography paragraph={true} gutterBottom={true} color="error.main">
+          {errors.password?.message}
+        </Typography>
+
+        <Stack direction="row" justifyContent="center">
+          <Button
+            className={styles.button}
+            variant="contained"
+            color="primary"
+            type="submit"
+            disabled={!isValid}
+          >
+            Login
+          </Button>
+        </Stack>
+      </form>
+
+      <Typography
+        paragraph={true}
+        gutterBottom={true}
+        mt={1}
+        color="primary.main"
+      >
+        Não é cadastrado? <Link to="/register">Cadastre-se</Link>
+      </Typography>
+    </Paper>
   );
 };
 

@@ -11,12 +11,16 @@ const AssetsSidebar = () => {
   const [activatedLink, setActivatedLink] = useState();
   const location = useLocation();
 
-  const handleClick = (link) => {
-    setActivatedLink(link);
-  };
+  // const handleClick = (link) => {
+  //   setActivatedLink(link);
+  // };
 
   useEffect(() => {
-    if (location.pathname === "/assets") {
+    if (location.pathname === "/assets/newasset") {
+      setActivatedLink("newasset");
+    } else if (location.pathname === "/assets/search") {
+      setActivatedLink("search");
+    } else {
       setActivatedLink();
     }
   }, [location]);
@@ -28,40 +32,44 @@ const AssetsSidebar = () => {
       justifyContent="space-around"
       bgcolor="primary.main"
       position="fixed"
-      top="15vh"
+      top="17vh"
       right="95vw"
       bottom="5vh"
       left="0"
-      padding="10px"
       textAlign="center"
       flexWrap="wrap"
     >
-      <Typography variant="subtitle1">
-        <Link to="/assets/newasset" onClick={() => handleClick("newasset")}>
-          <Button
-            className={
-              activatedLink === "newasset"
-                ? styles.button_activated
-                : styles.button_deactivated
-            }
-            variant="text"
-            startIcon={<AddIcon />}
-          />
-        </Link>
-      </Typography>
-      <Typography variant="subtitle1">
-        <Link to="/assets/search" onClick={() => handleClick("search")}>
-          <Button
-            className={
-              activatedLink === "search"
-                ? styles.button_activated
-                : styles.button_deactivated
-            }
-            variant="text"
-            startIcon={<SearchIcon />}
-          />
-        </Link>
-      </Typography>
+      <Link to="/assets/newasset">
+        <Button
+          className={
+            activatedLink === "newasset"
+              ? styles.button_activated
+              : styles.button_deactivated
+          }
+          variant="text"
+        >
+          <Stack direction="column" alignItems="center">
+            <AddIcon />
+            <Typography variant="subtitle1">Novo</Typography>
+          </Stack>
+        </Button>
+      </Link>
+
+      <Link to="/assets/search">
+        <Button
+          className={
+            activatedLink === "search"
+              ? styles.button_activated
+              : styles.button_deactivated
+          }
+          variant="text"
+        >
+          <Stack direction="column" alignItems="center">
+            <SearchIcon />
+            <Typography variant="subtitle1">Busca</Typography>
+          </Stack>
+        </Button>
+      </Link>
     </Stack>
   );
 };
